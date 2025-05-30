@@ -2,13 +2,12 @@ package tech.gb.btgpactual.microservice.entity;
 
 import java.math.BigDecimal;
 import java.util.List;
-
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
-
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
+
 @Document(collection = "tb_orders")
 public class OrderEntity {
 
@@ -21,7 +20,7 @@ public class OrderEntity {
     @Field(targetType = FieldType.DECIMAL128)
     private BigDecimal total;
 
-    private List<OrderItem> orderItems;
+    private List<OrderItem> items;
     
     
     public OrderEntity() {
@@ -51,12 +50,12 @@ public class OrderEntity {
         this.total = total;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public List<OrderItem> getItems() {
+        return items;  
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
     
 }

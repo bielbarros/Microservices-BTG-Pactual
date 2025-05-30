@@ -7,24 +7,24 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 
 public class OrderItem {
 
-    private String productId;
+    private String product;
     private Integer quantity;
 
     @Field(targetType = FieldType.DECIMAL128)
     private BigDecimal price;
     
-    public OrderItem(String productId, Integer quantity, BigDecimal price) {
-        this.productId = productId;
+    public OrderItem(String product, Integer quantity, BigDecimal price) {
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getProduct() {
+        return product;
     }
 
-    public void setProductId    (String productId) {
-        this.productId = productId;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
     public Integer getQuantity() {
