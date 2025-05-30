@@ -23,6 +23,7 @@ public class OrderEntity {
 
     private List<OrderItem> orderItems;
     
+    
     public OrderEntity() {
     }
 
