@@ -1,4 +1,3 @@
-
 # 💼 Microservices BTG Pactual - Backend Challenge
 
 Este projeto é a implementação técnica do desafio proposto pelo BTG Pactual para backend developers. A aplicação foi desenvolvida com foco em boas práticas de microsserviços, utilizando as tecnologias **Spring Boot**, **MongoDB**, **RabbitMQ** e **Docker**.
@@ -75,37 +74,90 @@ http://localhost:8080
 - User: `guest`
 - Senha: `guest`
 
+### Exemplo de Payload para Envio de Pedido
+
+```json
+{
+    "codigoPedido": 1002,
+    "codigoCliente": 1,
+    "itens": [
+        {
+            "produto": "Notebook",
+            "quantidade": 1,
+            "preco": 2300.10
+        },
+        {
+            "produto": "Mouse",
+            "quantidade": 10,
+            "preco": 129.90
+        }
+    ]
+}
+```
+
 ---
 
 ## 📊 MongoDB
 
 - Host: `localhost`
 - Porta: `27017`
-- Banco: `btg-challenge`
+- Banco: `tb_orders`
 - Collections configuradas diretamente via Spring Data
 
 ---
 
-## 🔍 Exemplos de Endpoints
+## 🔍 API Endpoints
 
+### Relatório de Pedidos
 ```http
-GET /api/v1/relatorio
-POST /api/v1/evento
+GET /customers/{customerId}/orders
 ```
 
-(Os endpoints reais devem ser descritos conforme a implementação.)
+#### Resposta
+```json
+{
+    "summary": {
+        "totalOnOrders": 3719.10
+    },
+    "data": [
+        {
+            "orderId": 1001,
+            "customerId": 1,
+            "total": 120.00
+        },
+        {
+            "orderId": 1002,
+            "customerId": 1,
+            "total": 3599.10
+        }
+    ],
+    "pagination": {
+        "page": 0,
+        "pageSize": 10,
+        "totalElements": 2,
+        "totalPages": 1
+    }
+}
+```
 
----
 
 ## 📈 Aggregations com MongoDB
 
-As operações de agregação foram implementadas utilizando `Aggregation Framework` do Spring Data, possibilitando cálculos avançados, agrupamentos e projeções diretamente no banco de dados.
+As operações de agregação foram implementadas utilizando `Aggregation Framework` do Spring Data, possibilitando:
+- Cálculos de totais por pedido
+- Agrupamentos por cliente
+- Projeções otimizadas
+- Paginação eficiente
 
 ---
 
 ## 📝 Logs
 
-Todos os eventos relevantes da aplicação são registrados usando **SLF4J**, garantindo rastreabilidade e fácil manutenção.
+Todos os eventos relevantes da aplicação são registrados usando **SLF4J**, garantindo:
+- Rastreabilidade completa das operações
+- Monitoramento de performance
+- Debugging facilitado
+- Auditoria de transações
 
 ---
 
